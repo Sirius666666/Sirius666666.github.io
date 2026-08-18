@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="刘子墨｜AI应用 · 数据产品 · Agent。将AI与数据能力接入真实业务流程。" />
+  <title>刘子墨｜AI Application · Data Product · Agent</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1728;
+      --card: rgba(15, 27, 45, 0.78);
+      --line: rgba(148, 163, 184, 0.16);
+      --text: #f8fafc;
+      --muted: #aebed2;
+      --accent: #63d4ff;
+      --accent-2: #8b7cff;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(99,212,255,.12), transparent 34%),
+        radial-gradient(circle at 86% 8%, rgba(139,124,255,.13), transparent 30%),
+        linear-gradient(180deg, var(--bg), #050b14 60%, #07111f);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(5, 11, 20, .72);
+      border-bottom: 1px solid rgba(148,163,184,.09);
+    }
+
+    .nav-inner {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand { font-weight: 800; letter-spacing: .02em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      min-height: 74vh;
+      display: grid;
+      align-items: center;
+      padding: 96px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border: 1px solid rgba(99,212,255,.25);
+      border-radius: 999px;
+      color: #c8f1ff;
+      background: rgba(99,212,255,.06);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 18px var(--accent); }
+    h1 { font-size: clamp(48px, 8vw, 88px); line-height: .98; margin: 0 0 24px; letter-spacing: -.04em; }
+    .gradient { background: linear-gradient(90deg, var(--accent), #a7b6ff 58%, #ffffff); -webkit-background-clip: text; color: transparent; }
+    .hero-sub { font-size: clamp(22px, 3vw, 34px); font-weight: 700; margin-bottom: 22px; color: #dbe9f7; }
+    .hero-copy { max-width: 780px; color: var(--muted); font-size: 18px; line-height: 1.85; margin: 0 0 34px; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-weight: 700;
+      font-size: 14px;
+      transition: .2s ease;
+    }
+    .btn.primary { background: linear-gradient(135deg, #63d4ff, #7d8cff); color: #06111c; border: 0; }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(99,212,255,.35); }
+
+    section { padding: 80px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 28px; }
+    .section-kicker { color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
+    h2 { margin: 0; font-size: clamp(30px, 4vw, 46px); letter-spacing: -.025em; }
+    .section-note { color: var(--muted); max-width: 520px; line-height: 1.7; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(18,32,52,.88), rgba(10,19,32,.82));
+      min-height: 355px;
+      transition: .22s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(99,212,255,.32); }
+    .num { font-size: 12px; color: var(--accent); font-weight: 800; letter-spacing: .12em; }
+    .card h3 { font-size: 24px; line-height: 1.25; margin: 18px 0 12px; }
+    .card p { color: var(--muted); line-height: 1.75; margin: 0 0 22px; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+    .tag { border: 1px solid var(--line); color: #c8d7e7; border-radius: 999px; padding: 6px 9px; font-size: 12px; background: rgba(255,255,255,.025); }
+
+    .about {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-copy { color: var(--muted); font-size: 17px; line-height: 1.9; }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill { padding: 10px 13px; border-radius: 10px; border: 1px solid var(--line); background: rgba(255,255,255,.025); color: #d7e5f2; font-size: 14px; }
+
+    footer { border-top: 1px solid rgba(148,163,184,.1); padding: 30px 0 42px; color: #7f92a8; font-size: 13px; }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .about { grid-template-columns: 1fr; gap: 28px; }
+      .section-head { display: block; }
+      .section-note { margin-top: 14px; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { gap: 14px; font-size: 13px; }
+      .hero { padding-top: 72px; }
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      h1 { font-size: 52px; }
+      .hero-copy { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nav-inner">
+      <div class="brand">ZIMO<span>.</span></div>
+      <div class="nav-links">
+        <a href="#work">Projects</a>
+        <a href="#about">About</a>
+        <a href="https://github.com/Sirius666666" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow"><span class="dot"></span> AI Application · Data Product · Agent</div>
+        <h1>刘子墨<br><span class="gradient">把 AI 真正接入业务。</span></h1>
+        <div class="hero-sub">Bridging AI with real-world business workflows.</div>
+        <p class="hero-copy">
+          我关注的不是“为了 AI 而 AI”，而是把传统业务中的人工流程，转化为可自动化、可量化、可落地的 AI 与数据工作流。通过数据科学、机器学习、LLM 与产品化思维，把技术变成真正能使用的工具。
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#work">查看项目</a>
+          <a class="btn" href="https://github.com/Sirius666666" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Selected Work</div>
+            <h2>真实问题，真实落地。</h2>
+          </div>
+          <div class="section-note">第一版作品集先展示三个最能代表我定位的项目。后续将补充项目截图、Demo、技术细节与可验证结果。</div>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="num">PROJECT 01 · PUBLIC SECTOR</div>
+            <h3>公共部门文本智能分类与决策支持</h3>
+            <p>面向真实公共部门业务，将非结构化文本转化为可分类、可复核、可分析的工作流，并通过 Power BI Dashboard 支持业务理解与决策。</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">NLP</span><span class="tag">TF-IDF</span><span class="tag">Linear SVM</span><span class="tag">Power BI</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="num">PROJECT 02 · EDUCATION</div>
+            <h3>教师离线成绩分析与自动报告系统</h3>
+            <p>把教师依赖 Excel 的重复统计流程产品化：支持导入成绩文件、自动分析班级与个人表现、比较多次考试，并生成可交付报告，同时保持本地离线使用。</p>
+            <div class="tags">
+              <span class="tag">Data Analysis</span><span class="tag">Excel Workflow</span><span class="tag">Offline App</span><span class="tag">Automation</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="num">PROJECT 03 · AI PRODUCT</div>
+            <h3>本地优先的 Windows AI 助手</h3>
+            <p>从需求、原型到真实用户测试，探索本地语音识别、TTS、AI交互与工具执行，并围绕安装体积、性能、交付体验与普通用户反馈持续迭代。</p>
+            <div class="tags">
+              <span class="tag">LLM Application</span><span class="tag">ASR</span><span class="tag">TTS</span><span class="tag">Windows</span><span class="tag">Product Iteration</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about">
+        <div>
+          <div class="section-kicker">About</div>
+          <h2>不是只会调用模型的人。</h2>
+        </div>
+        <div>
+          <p class="about-copy">
+            我正在攻读 Data Science & Analytics 硕士，长期关注 AI、数据科学与真实业务之间的连接。我的目标是成为能够理解业务问题、设计数据与 AI 方案、快速做出产品并推动落地的人，而不是把技术停留在 Demo 或概念层面。
+          </p>
+          <div class="skills">
+            <span class="skill">Python</span>
+            <span class="skill">Machine Learning</span>
+            <span class="skill">NLP</span>
+            <span class="skill">Power BI</span>
+            <span class="skill">LLM Applications</span>
+            <span class="skill">Agent Workflows</span>
+            <span class="skill">Data Products</span>
+            <span class="skill">Product Prototyping</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 刘子墨 · AI Application & Data Product Portfolio</div>
+  </footer>
+</body>
+</html>
