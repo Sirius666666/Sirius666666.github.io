@@ -7,197 +7,42 @@
   <title>刘子墨｜AI Application · Data Product · Agent</title>
   <style>
     :root{
-      --bg:#040a12;
-      --bg2:#07111f;
-      --panel:rgba(8,20,34,.72);
-      --panel2:rgba(11,27,45,.82);
-      --line:rgba(122,211,255,.16);
-      --line2:rgba(148,163,184,.14);
-      --text:#f7fbff;
-      --muted:#9eb2c7;
-      --accent:#5ee7ff;
-      --accent2:#8c7dff;
-      --green:#6ef0ba;
-      --max:1180px;
+      --bg:#040a12;--bg2:#07111f;--panel:rgba(8,20,34,.72);--panel2:rgba(11,27,45,.82);
+      --line:rgba(122,211,255,.16);--line2:rgba(148,163,184,.14);--text:#f7fbff;--muted:#9eb2c7;
+      --accent:#5ee7ff;--accent2:#7898c8;--green:#6ef0ba;--max:1180px;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      color:var(--text);
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-      min-height:100vh;
-      background:
-        radial-gradient(circle at 18% 8%,rgba(94,231,255,.13),transparent 30%),
-        radial-gradient(circle at 84% 6%,rgba(140,125,255,.15),transparent 28%),
-        linear-gradient(180deg,#050b13 0%,#07111f 46%,#040a12 100%);
-      overflow-x:hidden;
-    }
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:-1;
-      background-image:
-        linear-gradient(rgba(94,231,255,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(94,231,255,.035) 1px,transparent 1px);
-      background-size:44px 44px;
-      mask-image:linear-gradient(to bottom,rgba(0,0,0,.85),transparent 82%);
-    }
-    body::after{
-      content:"";
-      position:fixed;
-      width:520px;height:520px;
-      right:-220px;top:160px;
-      border:1px solid rgba(94,231,255,.08);
-      border-radius:50%;
-      box-shadow:0 0 100px rgba(94,231,255,.03),inset 0 0 70px rgba(140,125,255,.025);
-      pointer-events:none;
-      z-index:-1;
-    }
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto}
-
-    nav{
-      position:sticky;top:0;z-index:30;
-      backdrop-filter:blur(18px);
-      background:rgba(4,10,18,.72);
-      border-bottom:1px solid rgba(94,231,255,.08)
-    }
-    .nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{font-weight:900;letter-spacing:.12em;font-size:14px;display:flex;align-items:center;gap:10px}
-    .brand-mark{width:9px;height:9px;border-radius:2px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 18px rgba(94,231,255,.65);transform:rotate(45deg)}
-    .nav-links{display:flex;gap:24px;color:var(--muted);font-size:13px}
-    .nav-links a{position:relative;padding:7px 0}
-    .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--accent);transition:.2s ease}
-    .nav-links a:hover{color:#fff}.nav-links a:hover::after{right:0}
-
-    .hero{min-height:82vh;display:grid;align-items:center;padding:92px 0 70px}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:70px;align-items:center}
-    .eyebrow{display:inline-flex;width:fit-content;align-items:center;gap:10px;padding:8px 12px;border:1px solid rgba(94,231,255,.22);border-radius:999px;color:#c9f8ff;background:rgba(94,231,255,.045);font-size:12px;letter-spacing:.08em;margin-bottom:26px}
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px rgba(110,240,186,.8);animation:pulse 2.4s ease-in-out infinite}
-    @keyframes pulse{50%{opacity:.45;box-shadow:0 0 5px rgba(110,240,186,.45)}}
-    h1{font-size:clamp(50px,7.6vw,90px);line-height:.98;margin:0 0 24px;letter-spacing:-.045em}
-    .gradient{background:linear-gradient(90deg,#ffffff 0%,var(--accent) 42%,#a5a1ff 85%);-webkit-background-clip:text;color:transparent}
-    .hero-sub{font-size:clamp(20px,2.5vw,30px);font-weight:760;margin-bottom:20px;color:#d9e7f4}
-    .hero-copy{max-width:780px;color:var(--muted);font-size:17px;line-height:1.86;margin:0 0 32px}
-    .actions{display:flex;flex-wrap:wrap;gap:12px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:10px;border:1px solid var(--line2);background:rgba(255,255,255,.025);font-weight:760;font-size:13px;transition:.22s ease}
-    .btn.primary{background:linear-gradient(135deg,rgba(94,231,255,.95),rgba(140,125,255,.92));color:#031019;border:0;box-shadow:0 10px 30px rgba(94,231,255,.12)}
-    .btn:hover{transform:translateY(-2px);border-color:rgba(94,231,255,.36);box-shadow:0 14px 30px rgba(0,0,0,.24)}
-
-    .system-card{position:relative;border:1px solid rgba(94,231,255,.17);border-radius:22px;background:linear-gradient(180deg,rgba(11,26,44,.82),rgba(6,16,28,.74));padding:22px;box-shadow:0 28px 80px rgba(0,0,0,.28);overflow:hidden}
-    .system-card::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.8}
-    .system-card::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-95px;top:-95px;border:1px solid rgba(94,231,255,.10)}
-    .terminal-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;color:#7f98ae;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-    .lights{display:flex;gap:6px}.lights i{width:7px;height:7px;border-radius:50%;display:block;background:#284154}.lights i:nth-child(2){background:#42617a}.lights i:nth-child(3){background:var(--accent);box-shadow:0 0 9px rgba(94,231,255,.5)}
-    .status-line{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#b9cad9;font-size:12px;line-height:1.8;margin-bottom:18px}
-    .status-line .prompt{color:var(--green)}
-    .focus-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .focus{padding:13px;border:1px solid rgba(148,163,184,.12);border-radius:12px;background:rgba(255,255,255,.02)}
-    .focus b{display:block;font-size:12px;margin-bottom:4px;color:#edf8ff}.focus span{font-size:11px;color:#8298ad}
-    .system-foot{margin-top:16px;padding-top:14px;border-top:1px solid rgba(148,163,184,.1);display:flex;justify-content:space-between;gap:18px;color:#7f94a9;font-size:11px}
-    .live{color:var(--green)}
-
-    section{padding:82px 0}
-    .section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:30px}
-    .section-kicker{color:var(--accent);font-size:12px;font-weight:850;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
-    h2{margin:0;font-size:clamp(30px,4vw,46px);letter-spacing:-.03em}
-    .section-note{color:var(--muted);max-width:530px;line-height:1.75;font-size:14px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{position:relative;overflow:hidden;padding:26px;border:1px solid rgba(148,163,184,.13);border-radius:19px;background:linear-gradient(180deg,rgba(13,30,49,.82),rgba(6,17,30,.8));min-height:392px;transition:.24s ease;display:flex;flex-direction:column}
-    .card::before{content:"";position:absolute;left:18px;right:18px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(94,231,255,.6),transparent);opacity:.6}
-    .card::after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-50px;bottom:-50px;border:1px solid rgba(94,231,255,.08);transition:.25s ease}
-    .card:hover{transform:translateY(-6px);border-color:rgba(94,231,255,.32);box-shadow:0 20px 55px rgba(0,0,0,.26),0 0 0 1px rgba(94,231,255,.03) inset}
-    .card:hover::after{transform:scale(1.4);border-color:rgba(94,231,255,.18)}
-    .num{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.09em}
-    .card h3{font-size:24px;line-height:1.3;margin:20px 0 12px}
-    .card p{color:var(--muted);line-height:1.78;margin:0 0 22px;font-size:15px}
-    .tags{display:flex;gap:8px;flex-wrap:wrap}.tag{border:1px solid rgba(148,163,184,.14);color:#c5d5e3;border-radius:999px;padding:6px 9px;font-size:11px;background:rgba(255,255,255,.018)}
-    .more{margin-top:auto;padding-top:25px;color:var(--accent);font-weight:820;font-size:12px;letter-spacing:.03em}
-
-    .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
-    .about-copy{color:var(--muted);font-size:16px;line-height:1.95;margin-top:0}
-    .skills{display:flex;flex-wrap:wrap;gap:9px}.skill{padding:9px 12px;border-radius:9px;border:1px solid rgba(148,163,184,.13);background:rgba(255,255,255,.02);color:#d5e4f0;font-size:12px}
-    .signal{margin-top:26px;padding:15px 16px;border:1px solid rgba(94,231,255,.13);border-radius:12px;background:linear-gradient(90deg,rgba(94,231,255,.035),transparent);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#9db2c5;font-size:12px}
-    .signal strong{color:var(--green);font-weight:700}
-
-    footer{border-top:1px solid rgba(94,231,255,.07);padding:30px 0 42px;color:#6f8498;font-size:12px}
-
-    @media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:36px}.system-card{max-width:620px}.grid{grid-template-columns:1fr}.about{grid-template-columns:1fr;gap:28px}.section-head{display:block}.section-note{margin-top:14px}}
-    @media(max-width:640px){.nav-links{gap:13px;font-size:12px}.nav-links a:nth-child(3){display:none}.hero{padding-top:68px}.wrap{width:min(var(--max),calc(100% - 28px))}h1{font-size:51px}.hero-copy{font-size:15px}.focus-grid{grid-template-columns:1fr 1fr}}
-    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;min-height:100vh;background:radial-gradient(circle at 18% 8%,rgba(94,231,255,.10),transparent 30%),radial-gradient(circle at 84% 6%,rgba(120,152,200,.09),transparent 28%),linear-gradient(180deg,#050b13 0%,#07111f 46%,#040a12 100%);overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(94,231,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(94,231,255,.028) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.85),transparent 82%)}
+    body::after{content:"";position:fixed;width:520px;height:520px;right:-220px;top:160px;border:1px solid rgba(94,231,255,.07);border-radius:50%;box-shadow:0 0 100px rgba(94,231,255,.025),inset 0 0 70px rgba(120,152,200,.02);pointer-events:none;z-index:-1}
+    a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(18px);background:rgba(4,10,18,.72);border-bottom:1px solid rgba(94,231,255,.08)}
+    .nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{font-weight:900;letter-spacing:.12em;font-size:14px;display:flex;align-items:center;gap:10px}.brand-mark{width:9px;height:9px;border-radius:2px;background:linear-gradient(135deg,#78dbe9,#7393ba);box-shadow:0 0 14px rgba(94,231,255,.38);transform:rotate(45deg)}
+    .nav-links{display:flex;gap:24px;color:var(--muted);font-size:13px}.nav-links a{position:relative;padding:7px 0}.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:#84cddd;transition:.2s ease}.nav-links a:hover{color:#fff}.nav-links a:hover::after{right:0}
+    .hero{min-height:82vh;display:grid;align-items:center;padding:92px 0 70px}.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:70px;align-items:center}
+    .eyebrow{display:inline-flex;width:fit-content;align-items:center;gap:10px;padding:8px 12px;border:1px solid rgba(94,231,255,.18);border-radius:999px;color:#c5e6ed;background:rgba(94,231,255,.035);font-size:12px;letter-spacing:.08em;margin-bottom:26px}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(110,240,186,.6);animation:pulse 2.4s ease-in-out infinite}@keyframes pulse{50%{opacity:.45;box-shadow:0 0 5px rgba(110,240,186,.35)}}
+    h1{font-size:clamp(50px,7.6vw,90px);line-height:.98;margin:0 0 24px;letter-spacing:-.045em}.headline-main{color:#f4f8fb}.gradient{color:#cfe2e9;text-shadow:0 0 28px rgba(94,231,255,.055)}
+    .hero-sub{font-size:clamp(20px,2.5vw,30px);font-weight:760;margin-bottom:20px;color:#d9e7f4}.hero-copy{max-width:780px;color:var(--muted);font-size:17px;line-height:1.86;margin:0 0 32px}.actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:10px;border:1px solid var(--line2);background:rgba(255,255,255,.025);font-weight:760;font-size:13px;transition:.22s ease}.btn.primary{background:linear-gradient(135deg,#82d9e5,#89a6c8);color:#061019;border:0;box-shadow:0 10px 30px rgba(94,231,255,.08)}.btn:hover{transform:translateY(-2px);border-color:rgba(94,231,255,.30);box-shadow:0 14px 30px rgba(0,0,0,.24)}
+    .system-card{position:relative;border:1px solid rgba(94,231,255,.15);border-radius:22px;background:linear-gradient(180deg,rgba(11,26,44,.82),rgba(6,16,28,.74));padding:22px;box-shadow:0 28px 80px rgba(0,0,0,.28);overflow:hidden}.system-card::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,#83cbd9,transparent);opacity:.65}.system-card::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-95px;top:-95px;border:1px solid rgba(94,231,255,.08)}
+    .terminal-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;color:#7f98ae;font-size:11px;letter-spacing:.12em;text-transform:uppercase}.lights{display:flex;gap:6px}.lights i{width:7px;height:7px;border-radius:50%;display:block;background:#284154}.lights i:nth-child(2){background:#42617a}.lights i:nth-child(3){background:#86cbd7;box-shadow:0 0 8px rgba(94,231,255,.35)}
+    .status-line{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#b9cad9;font-size:12px;line-height:1.8;margin-bottom:18px}.status-line .prompt{color:var(--green)}.focus-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.focus{padding:13px;border:1px solid rgba(148,163,184,.12);border-radius:12px;background:rgba(255,255,255,.02)}.focus b{display:block;font-size:12px;margin-bottom:4px;color:#edf8ff}.focus span{font-size:11px;color:#8298ad}.system-foot{margin-top:16px;padding-top:14px;border-top:1px solid rgba(148,163,184,.1);display:flex;justify-content:space-between;gap:18px;color:#7f94a9;font-size:11px}.live{color:var(--green)}
+    section{padding:82px 0}.section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:30px}.section-kicker{color:#8ccbd6;font-size:12px;font-weight:850;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}h2{margin:0;font-size:clamp(30px,4vw,46px);letter-spacing:-.03em}.section-note{color:var(--muted);max-width:530px;line-height:1.75;font-size:14px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{position:relative;overflow:hidden;padding:26px;border:1px solid rgba(148,163,184,.13);border-radius:19px;background:linear-gradient(180deg,rgba(13,30,49,.82),rgba(6,17,30,.8));min-height:392px;transition:.24s ease;display:flex;flex-direction:column}.card::before{content:"";position:absolute;left:18px;right:18px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(94,231,255,.45),transparent);opacity:.55}.card::after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-50px;bottom:-50px;border:1px solid rgba(94,231,255,.07);transition:.25s ease}.card:hover{transform:translateY(-6px);border-color:rgba(94,231,255,.26);box-shadow:0 20px 55px rgba(0,0,0,.26),0 0 0 1px rgba(94,231,255,.025) inset}.card:hover::after{transform:scale(1.4);border-color:rgba(94,231,255,.14)}
+    .num{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:#8ccbd6;font-weight:800;letter-spacing:.09em}.card h3{font-size:24px;line-height:1.3;margin:20px 0 12px}.card p{color:var(--muted);line-height:1.78;margin:0 0 22px;font-size:15px}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{border:1px solid rgba(148,163,184,.14);color:#c5d5e3;border-radius:999px;padding:6px 9px;font-size:11px;background:rgba(255,255,255,.018)}.more{margin-top:auto;padding-top:25px;color:#8ccbd6;font-weight:820;font-size:12px;letter-spacing:.03em}
+    .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}.about-copy{color:var(--muted);font-size:16px;line-height:1.95;margin-top:0}.skills{display:flex;flex-wrap:wrap;gap:9px}.skill{padding:9px 12px;border-radius:9px;border:1px solid rgba(148,163,184,.13);background:rgba(255,255,255,.02);color:#d5e4f0;font-size:12px}.signal{margin-top:26px;padding:15px 16px;border:1px solid rgba(94,231,255,.11);border-radius:12px;background:linear-gradient(90deg,rgba(94,231,255,.028),transparent);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#9db2c5;font-size:12px}.signal strong{color:var(--green);font-weight:700}
+    footer{border-top:1px solid rgba(94,231,255,.06);padding:30px 0 42px;color:#6f8498;font-size:12px}
+    @media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:36px}.system-card{max-width:620px}.grid{grid-template-columns:1fr}.about{grid-template-columns:1fr;gap:28px}.section-head{display:block}.section-note{margin-top:14px}}@media(max-width:640px){.nav-links{gap:13px;font-size:12px}.nav-links a:nth-child(3){display:none}.hero{padding-top:68px}.wrap{width:min(var(--max),calc(100% - 28px))}h1{font-size:51px}.hero-copy{font-size:15px}.focus-grid{grid-template-columns:1fr 1fr}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
   </style>
 </head>
 <body>
-  <nav>
-    <div class="wrap nav-inner">
-      <div class="brand"><span class="brand-mark"></span>ZIMO / AI SYSTEMS</div>
-      <div class="nav-links">
-        <a href="#work">Projects</a>
-        <a href="resume.html">Resume</a>
-        <a href="#about">About</a>
-        <a href="https://github.com/Sirius666666" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-    </div>
-  </nav>
-
+  <nav><div class="wrap nav-inner"><div class="brand"><span class="brand-mark"></span>ZIMO / AI SYSTEMS</div><div class="nav-links"><a href="#work">Projects</a><a href="resume.html">Resume</a><a href="#about">About</a><a href="https://github.com/Sirius666666" target="_blank" rel="noreferrer">GitHub</a></div></div></nav>
   <main>
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow"><span class="dot"></span> SYSTEM ONLINE · AI APPLICATION / DATA PRODUCT / AGENT</div>
-          <h1>刘子墨<br><span class="gradient">把 AI 真正接入业务。</span></h1>
-          <div class="hero-sub">Bridging AI with real-world business workflows.</div>
-          <p class="hero-copy">我关注的不是“为了 AI 而 AI”，而是把传统业务中的人工流程，转化为可自动化、可量化、可落地的 AI 与数据工作流。通过数据科学、机器学习、LLM 与产品化思维，把技术变成真正能使用的工具。</p>
-          <div class="actions">
-            <a class="btn primary" href="#work">查看项目 →</a>
-            <a class="btn" href="resume.html">公开版简历</a>
-            <a class="btn" href="https://github.com/Sirius666666" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </div>
-
-        <aside class="system-card" aria-label="Focus areas">
-          <div class="terminal-top"><span>PROFILE / CURRENT FOCUS</span><span class="lights"><i></i><i></i><i></i></span></div>
-          <div class="status-line"><span class="prompt">$</span> deploy_ai --to real_business<br><span class="prompt">></span> objective: usable / measurable / maintainable<br><span class="prompt">></span> status: building evidence, not buzzwords</div>
-          <div class="focus-grid">
-            <div class="focus"><b>AI Application</b><span>LLM · Agent · Local AI</span></div>
-            <div class="focus"><b>Data Product</b><span>Analytics · Dashboard</span></div>
-            <div class="focus"><b>Business Workflow</b><span>Automation · ROI</span></div>
-            <div class="focus"><b>Delivery</b><span>Prototype → User</span></div>
-          </div>
-          <div class="system-foot"><span>PORTFOLIO BUILD v2.1</span><span class="live">● ACTIVE</span></div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="work">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="section-kicker">Selected Work / Case Studies</div><h2>真实问题，真实落地。</h2></div>
-          <div class="section-note">首页负责让非专业人士快速理解价值；进入详情页后，再展开模型、数据、验证方法、产品迭代和真实约束。</div>
-        </div>
-        <div class="grid">
-          <a class="card" href="projects/cardiff-asb.html"><div class="num">[01] PUBLIC_SECTOR / NLP</div><h3>公共部门文本智能分类与决策支持</h3><p>面向真实公共部门业务，将非结构化文本转化为可分类、可复核、可分析的工作流，并通过 Power BI Dashboard 支持业务理解与决策。</p><div class="tags"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">TF-IDF</span><span class="tag">Linear SVM</span><span class="tag">Power BI</span></div><div class="more">OPEN CASE STUDY →</div></a>
-          <a class="card" href="projects/teacher-analytics.html"><div class="num">[02] EDUCATION / DATA_PRODUCT</div><h3>教师离线成绩分析与自动报告系统</h3><p>把教师依赖 Excel 的重复统计流程产品化：支持导入成绩文件、自动分析班级与个人表现、比较多次考试，并生成可交付报告，同时保持本地离线使用。</p><div class="tags"><span class="tag">Data Analysis</span><span class="tag">Excel Workflow</span><span class="tag">Offline App</span><span class="tag">Automation</span></div><div class="more">OPEN CASE STUDY →</div></a>
-          <a class="card" href="projects/xiaomo-ai.html"><div class="num">[03] AI_PRODUCT / LOCAL_FIRST</div><h3>本地优先的 Windows AI 助手</h3><p>从需求、原型到真实用户测试，探索本地语音识别、TTS、AI交互与工具执行，并围绕安装体积、性能、交付体验与普通用户反馈持续迭代。</p><div class="tags"><span class="tag">LLM Application</span><span class="tag">ASR</span><span class="tag">TTS</span><span class="tag">Windows</span><span class="tag">Product Iteration</span></div><div class="more">OPEN CASE STUDY →</div></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="wrap about">
-        <div><div class="section-kicker">About / Positioning</div><h2>不是只会调用模型的人。</h2></div>
-        <div>
-          <p class="about-copy">我正在攻读 Data Science & Analytics 硕士，长期关注 AI、数据科学与真实业务之间的连接。我的目标是成为能够理解业务问题、设计数据与 AI 方案、快速做出产品并推动落地的人，而不是把技术停留在 Demo 或概念层面。</p>
-          <div class="skills"><span class="skill">Python</span><span class="skill">Machine Learning</span><span class="skill">NLP</span><span class="skill">Power BI</span><span class="skill">LLM Applications</span><span class="skill">Agent Workflows</span><span class="skill">Data Products</span><span class="skill">Product Prototyping</span></div>
-          <div class="signal"><strong>signal&gt;</strong> 技术只是手段。真正重要的是：问题是否真实、方案是否可落地、结果是否可验证。</div>
-        </div>
-      </div>
-    </section>
+    <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow"><span class="dot"></span> SYSTEM ONLINE · AI APPLICATION / DATA PRODUCT / AGENT</div><h1><span class="headline-main">刘子墨</span><br><span class="gradient">把 AI 真正接入业务。</span></h1><div class="hero-sub">Bridging AI with real-world business workflows.</div><p class="hero-copy">我关注的不是“为了 AI 而 AI”，而是把传统业务中的人工流程，转化为可自动化、可量化、可落地的 AI 与数据工作流。通过数据科学、机器学习、LLM 与产品化思维，把技术变成真正能使用的工具。</p><div class="actions"><a class="btn primary" href="#work">查看项目 →</a><a class="btn" href="resume.html">公开版简历</a><a class="btn" href="https://github.com/Sirius666666" target="_blank" rel="noreferrer">GitHub</a></div></div>
+      <aside class="system-card" aria-label="Focus areas"><div class="terminal-top"><span>PROFILE / CURRENT FOCUS</span><span class="lights"><i></i><i></i><i></i></span></div><div class="status-line"><span class="prompt">$</span> deploy_ai --to real_business<br><span class="prompt">></span> objective: usable / measurable / maintainable<br><span class="prompt">></span> status: building evidence, not buzzwords</div><div class="focus-grid"><div class="focus"><b>AI Application</b><span>LLM · Agent · Local AI</span></div><div class="focus"><b>Data Product</b><span>Analytics · Dashboard</span></div><div class="focus"><b>Business Workflow</b><span>Automation · ROI</span></div><div class="focus"><b>Delivery</b><span>Prototype → User</span></div></div><div class="system-foot"><span>PORTFOLIO BUILD v2.2</span><span class="live">● ACTIVE</span></div></aside></div></section>
+    <section id="work"><div class="wrap"><div class="section-head"><div><div class="section-kicker">Selected Work / Case Studies</div><h2>真实问题，真实落地。</h2></div><div class="section-note">首页负责让非专业人士快速理解价值；进入详情页后，再展开模型、数据、验证方法、产品迭代和真实约束。</div></div><div class="grid"><a class="card" href="projects/cardiff-asb.html"><div class="num">[01] PUBLIC_SECTOR / NLP</div><h3>公共部门文本智能分类与决策支持</h3><p>面向真实公共部门业务，将非结构化文本转化为可分类、可复核、可分析的工作流，并通过 Power BI Dashboard 支持业务理解与决策。</p><div class="tags"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">TF-IDF</span><span class="tag">Linear SVM</span><span class="tag">Power BI</span></div><div class="more">OPEN CASE STUDY →</div></a><a class="card" href="projects/teacher-analytics.html"><div class="num">[02] EDUCATION / DATA_PRODUCT</div><h3>教师离线成绩分析与自动报告系统</h3><p>把教师依赖 Excel 的重复统计流程产品化：支持导入成绩文件、自动分析班级与个人表现、比较多次考试，并生成可交付报告，同时保持本地离线使用。</p><div class="tags"><span class="tag">Data Analysis</span><span class="tag">Excel Workflow</span><span class="tag">Offline App</span><span class="tag">Automation</span></div><div class="more">OPEN CASE STUDY →</div></a><a class="card" href="projects/xiaomo-ai.html"><div class="num">[03] AI_PRODUCT / LOCAL_FIRST</div><h3>本地优先的 Windows AI 助手</h3><p>从需求、原型到真实用户测试，探索本地语音识别、TTS、AI交互与工具执行，并围绕安装体积、性能、交付体验与普通用户反馈持续迭代。</p><div class="tags"><span class="tag">LLM Application</span><span class="tag">ASR</span><span class="tag">TTS</span><span class="tag">Windows</span><span class="tag">Product Iteration</span></div><div class="more">OPEN CASE STUDY →</div></a></div></div></section>
+    <section id="about"><div class="wrap about"><div><div class="section-kicker">About / Positioning</div><h2>不是只会调用模型的人。</h2></div><div><p class="about-copy">我正在攻读 Data Science & Analytics 硕士，长期关注 AI、数据科学与真实业务之间的连接。我的目标是成为能够理解业务问题、设计数据与 AI 方案、快速做出产品并推动落地的人，而不是把技术停留在 Demo 或概念层面。</p><div class="skills"><span class="skill">Python</span><span class="skill">Machine Learning</span><span class="skill">NLP</span><span class="skill">Power BI</span><span class="skill">LLM Applications</span><span class="skill">Agent Workflows</span><span class="skill">Data Products</span><span class="skill">Product Prototyping</span></div><div class="signal"><strong>signal&gt;</strong> 技术只是手段。真正重要的是：问题是否真实、方案是否可落地、结果是否可验证。</div></div></div></section>
   </main>
-
-  <footer><div class="wrap">© 2026 刘子墨 · AI Application & Data Product Portfolio · build 2.1</div></footer>
+  <footer><div class="wrap">© 2026 刘子墨 · AI Application & Data Product Portfolio · build 2.2</div></footer>
 </body>
 </html>
